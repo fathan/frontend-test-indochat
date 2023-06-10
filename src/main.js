@@ -6,6 +6,8 @@ import '@styles/main.scss';
 import App from './App.vue';
 import router from './router';
 
+import vue3StarRatings from 'vue3-star-ratings';
+
 import Icon from '@components/Common/Icon';
 import IconSquircle from '@components/Common/Icon/Global/Squircle.vue';
 import IconFilter from '@components/Common/Icon/Global/Filter.vue';
@@ -27,6 +29,9 @@ app.component('icon-squircle', IconSquircle);
 app.component('icon-filter', IconFilter);
 app.component('icon-arrow-left', IconArrowLeft);
 app.component('icon-arrow-right', IconArrowRight);
+
+/** Vue Rating Star */
+app.component('vue3-star-ratings', vue3StarRatings);
 
 /** Mount App */
 app.mount('#app');
