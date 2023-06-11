@@ -29,8 +29,7 @@ Hello, My name is Fathan Rohman I am Frontend engineer. I create sample fetch Da
   "swiper": "^9.3.2",
   "v-lazy-image": "^2.1.1",
   "vue": "^3.3.2",
-  "vue-router": "^4.2.0",
-  "vue3-star-ratings": "^2.0.5"
+  "vue-router": "^4.2.0"
 },
 "devDependencies": {
   "@rushstack/eslint-patch": "^1.2.0",
