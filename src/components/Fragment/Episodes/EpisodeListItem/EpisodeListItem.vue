@@ -1,22 +1,30 @@
 <template>
-  <div class="w-8/12 lg:w-3/12 snap-start flex-shrink-0">
+  <div class="w-9/12 lg:w-3/12 snap-start flex-shrink-0">
     <router-link
       :to="{
         name: 'Episode Detail',
         params: {
-          episodeId: 1
+          seasonId: seasonId,
+          episodeId: item.id
         }
       }"
       class="relative flex justify-center overflow-hidden rounded-xl mb-4"
     >
       <img
-        src="https://static.tvmaze.com/uploads/images/original_untouched/1/2678.jpg"
+        v-if="item.image !== null"
+        :src="item.image.original"
+        class="h-96 w-full object-cover"
+        alt="Image"
+      />
+      <img
+        v-else
+        src="~@assets/no-image.png"
         class="h-96 w-full object-cover"
         alt="Image"
       />
       <div class="absolute right-0 top-0 bg-[#F8B319] rounded-bl-lg rounded-tr-lg px-5 py-1">
         <span class="text-xl font-bold">
-          8.2
+          {{ item.rating.average }}
         </span>
       </div>
     </router-link>
@@ -27,24 +35,40 @@
           :to="{
             name: 'Episode Detail',
             params: {
-              episodeId: 1
+              seasonId: seasonId,
+              episodeId: item.id
             }
           }"
         >
           <h2 class="text-white text-xl">
-            Lorem ipsum dolor sit amet
+            {{ item.name }}
           </h2>
         </router-link>
       </div>
       <Rating
         :withShowPoint="true"
-        :point="8.2"
+        :point="item.rating.average"
       />
       <div>
         <h2 class="text-white text-xl">
-          Episode 01
+          Episode {{ item.number }}
         </h2>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    item: {
+      type: Object,
+      default: () => ({})
+    },
+    seasonId: {
+      type: Number,
+      default: 1
+    }
+  }
+};
+</script>

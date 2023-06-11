@@ -1,15 +1,15 @@
 import http from '@services/http';
 
 export default {
-  getListEpisode: () => {
+  getListEpisode: (showId = 82) => {
     return http.requestToServer({
-      url: '/shows/82/episodes',
+      url: `/shows/${ showId }/episodes`,
       method: 'GET'
     });
   },
   getListEpisodeBySeasonId: (seasonId) => {
     return http.requestToServer({
-      url: `/season/${ seasonId }/episodes`,
+      url: `/seasons/${ seasonId }/episodes`,
       method: 'GET'
     });
   },

@@ -18,28 +18,27 @@
       @slidechange="onSlideChange"
     >
       <swiper-slide
-        v-for="i in 5"
-        :key="i"
+        v-for="(item, idx) in episodes"
+        :key="idx"
       >
         <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-          <img
-            src="https://static.tvmaze.com/uploads/images/original_untouched/1/3177.jpg"
+          <v-lazy-image
+            :src="item.image.original"
             class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-            alt=""
-          >
+          />
         </div>
         <div class="absolute left-8 top-2 lg:top-12">
           <div class="text-lg lg:text-5xl font-bold text-white mb-0 lg:mb-3">
-            Slide #{{ i }}
+            {{ item.name }}
           </div>
-          <Rating />
+          <Rating :point="item.rating.average"/>
         </div>
 
-        <div class="absolute bottom-6 right-6">
+        <div class="absolute bottom-6 right-5 lg:right-16">
           <router-link :to="{
             name: 'Episode Detail',
             params: {
-              episodeId: 1
+              episodeId: item.id
             }
           }">
             <Button title="Watch Now" />
@@ -61,7 +60,7 @@
     </button>
     <button
       type="button"
-      class="flex absolute top-0 right-4 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
+      class="flex absolute top-0 right-4 z-30 justify-center items-center h-full cursor-pointer group focus:outline-none"
       @click="next"
     >
       <span class="inline-flex justify-center items-center w-8 h-8 lg:w-12 lg:h-12 rounded-lg lg:rounded-2xl lg:w-14 lg:h-14 bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
@@ -75,9 +74,21 @@
 import { reactive } from 'vue';
 import { register } from 'swiper/element/bundle';
 
+import NoImage from '@assets/no-image.png';
+import VLazyImage from 'v-lazy-image';
+
 register();
 
 export default {
+  components: {
+    VLazyImage
+  },
+  props: {
+    episodes: {
+      type: Array,
+      default: () => ([])
+    }
+  },
   setup () {
     const state = reactive({
       rating: 5
@@ -86,7 +97,7 @@ export default {
     const spaceBetween = 10;
     const onProgress = (e) => {
       const [swiper, progress] = e.detail;
-      console.log(progress)
+      // console.log(progress)
     };
 
     const onSlideChange = (e) => {
@@ -110,6 +121,7 @@ export default {
       onSlideChange,
       next,
       prev,
+      NoImage
     };
   }
 }

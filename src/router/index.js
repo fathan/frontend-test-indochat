@@ -33,7 +33,7 @@ const router = createRouter({
           component: defineAsyncComponent(() => import('@pages/Episodes/components/List'))
         },
         {
-          path: 'detail/:episodeId',
+          path: '/episode/:episodeId',
           name: 'Episode Detail',
           component: defineAsyncComponent(() => import('@pages/Episodes/components/Detail'))
         }

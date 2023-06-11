@@ -3,8 +3,13 @@
     class="flex h-screen w-full bg-black bg-cover bg-no-repeat"
     :style="`background-image:url(${ state.episode.image })`"
   >
-    <div class="px-20 pt-10">
-      <BackButton routeName="Episode List" />
+    <div class="px-5 lg:px-20 pt-10">
+      <BackButton :routePath="{
+        name: 'Episode List',
+        query: {
+          seasonId: state.episode.season
+        }
+      }" />
 
       <section class="mt-40">
         <div>
@@ -36,6 +41,8 @@ import EpisodeServices from '@services/api/episodes';
 import { onMounted, reactive } from 'vue';
 import { useRoute } from 'vue-router';
 
+import NoImage from '@assets/no-image.png';
+
 export default {
   setup () {
     const route = useRoute();
@@ -48,7 +55,8 @@ export default {
         image: '',
         name: '',
         ratingAverage: 0,
-        summary: ''
+        summary: '',
+        season: ''
       }
     });
 
@@ -67,10 +75,11 @@ export default {
 
         Object.assign(state.episode, {
           id: response.id,
-          image: response.image.original,
+          image: response.image !== null ? response.image.original : NoImage,
           name: response.name,
           ratingAverage: response.rating.average,
-          summary: response.summary
+          summary: response.summary,
+          season: response.season
         });
       }
       catch (error) {

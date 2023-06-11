@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="{ name: routeName }">
+  <router-link :to="routePath">
     <section class="flex flex-row cursor-pointer mb-10">
       <button type="button" class="flex h-full cursor-pointer group focus:outline-none">
         <span class="inline-flex justify-center items-center w-8 h-8 rounded-lg sm:w-10 sm:h-10 bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
@@ -19,10 +19,10 @@
 <script>
 export default {
   props: {
-    routeName: {
-      type: String,
+    routePath: {
+      type: Object,
       default: ''
     }
   }
-};
+}
 </script>

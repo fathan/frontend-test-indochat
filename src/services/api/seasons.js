@@ -1,9 +1,9 @@
 import http from '@services/http';
 
 export default {
-  getListSeason: () => {
+  getListSeason: (showId = 82) => {
     return http.requestToServer({
-      url: '/shows/82/seasons',
+      url: `/shows/${ showId }/seasons`,
       method: 'GET'
     });
   }
