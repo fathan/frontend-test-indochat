@@ -7,8 +7,6 @@ import '@styles/main.scss';
 import App from './App.vue';
 import router from './router';
 
-import vue3StarRatings from 'vue3-star-ratings';
-
 import BackButton from '@components/Common/BackButton';
 import Button from '@components/Common/Button';
 import Rating from '@components/Common/Rating';
@@ -41,9 +39,6 @@ app.component('icon-squircle', IconSquircle);
 app.component('icon-filter', IconFilter);
 app.component('icon-arrow-left', IconArrowLeft);
 app.component('icon-arrow-right', IconArrowRight);
-
-/** Vue Rating Star */
-app.component('vue3-star-ratings', vue3StarRatings);
 
 /** Mount App */
 app.mount('#app');
