@@ -2,6 +2,8 @@
 
 Hello, My name is Fathan Rohman I am Frontend engineer. I create sample fetch Data from api/tvmaze.com site. Please code review my codebase for IT Manager, Tech Lead Frontend on Tech Department Indochat.
 
+for production mode please click this link [DEMO](https://classy-semifreddo-6dcc9a.netlify.app/)
+
 ## Tools Used
 
 ```sh
@@ -53,6 +55,7 @@ Hello, My name is Fathan Rohman I am Frontend engineer. I create sample fetch Da
 ```
 
 ## Result Screenshot Project 
+
 ![plot](./src/assets/homepage.png)
 Homepage
 
@@ -119,7 +122,7 @@ npm run test:e2e
 npm run lint
 ```
 
-## @TODO
+## @TODO NEXT
 ```
 - Unit Test
 ```
