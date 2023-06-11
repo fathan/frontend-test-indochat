@@ -84,7 +84,7 @@ export default {
           id: response.id,
           image: response.image !== null ? response.image.original : NoImage,
           name: response.name,
-          ratingAverage: 10,
+          ratingAverage: response.rating.average,
           summary: response.summary,
           season: response.season
         });
