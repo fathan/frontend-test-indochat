@@ -3,6 +3,7 @@
     <div class="w-full transform transition-transform duration-500 ease-in-out hover:scale-110">
       <v-lazy-image
         :src="item.image.original"
+        alt="Season Image"
       />
     </div>
     <div class="absolute top-0 right-0 bottom-0 left-0 bg-black/50 overlay-4" />
