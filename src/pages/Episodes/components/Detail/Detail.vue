@@ -1,7 +1,7 @@
 <template>
   <div
     class="flex h-screen w-full bg-black bg-cover bg-no-repeat"
-    style="background-image:url('https://static.tvmaze.com/uploads/images/original_untouched/1/3178.jpg')"
+    :style="`background-image:url(${ state.episode.image })`"
   >
     <div class="px-20 pt-10">
       <BackButton routeName="Episode List" />
@@ -10,22 +10,81 @@
         <div>
           <div class="mb-3">
             <h2 class="text-white text-2xl lg:text-6xl">
-              Lorem ipsum dolor sit amet
+              {{ state.episode.name }}
             </h2>
           </div>
 
           <Rating
             :withShowPoint="true"
-            :point="8.1"
+            :point="state.episode.ratingAverage"
           />
 
           <div class="mt-20">
-            <p class="text-white text-base lg:text-xl">
-              Lorem ipsum dolor sit amet
-            </p>
+            <p
+              v-html="state.episode.summary"
+              class="text-white text-base lg:text-xl"
+            />
           </div>
         </div>
       </section>
     </div>    
   </div>
 </template>
+
+<script>
+import EpisodeServices from '@services/api/episodes';
+import { onMounted, reactive } from 'vue';
+import { useRoute } from 'vue-router';
+
+export default {
+  setup () {
+    const route = useRoute();
+
+    // ///////////////////////
+
+    const state = reactive({
+      episode: {
+        id: '',
+        image: '',
+        name: '',
+        ratingAverage: 0,
+        summary: ''
+      }
+    });
+
+    onMounted(() => {
+      initialize();
+    });
+
+    const initialize = () => {
+      xhrGetDetailEpisode();
+    };
+
+    const xhrGetDetailEpisode = async () => {
+      try {
+        const id = getEpisodeId();
+        const response = await EpisodeServices.getDetailEpisode(id);
+
+        Object.assign(state.episode, {
+          id: response.id,
+          image: response.image.original,
+          name: response.name,
+          ratingAverage: response.rating.average,
+          summary: response.summary
+        });
+      }
+      catch (error) {
+        window.alert(error.message);
+      }
+    };
+
+    const getEpisodeId = () => {
+      return route.params.episodeId;
+    };
+
+    return {
+      state
+    }
+  }
+};
+</script>
