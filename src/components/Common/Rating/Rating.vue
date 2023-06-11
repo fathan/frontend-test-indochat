@@ -49,7 +49,7 @@
         aria-hidden="true"
         class="w-5 h-5"
         :class="{
-          'text-yellow-400': point > 7,
+          'text-yellow-400': point > 6.9,
           'text-gray-300 dark:text-gray-500': point < 7
         }"
         fill="currentColor"

@@ -2,7 +2,7 @@
   <div class="px-5 lg:px-20 pt-10">
     <BackButton :routePath="{ name: 'Home' }" />
 
-    <section class="mb-10 lg:mb-40">
+    <section class="mb-10 lg:mb-24">
       <h1 class="text-xl lg:text-4xl uppercase text-white font-bold">
         season {{ getSeasonId() }} - list episodes
       </h1>
@@ -10,7 +10,7 @@
   </div>
 
   <div class="pl-5 lg:pl-20 overflow-hidden">
-    <section class="flex gap-4 lg:gap-20 snap-x overflow-scroll">
+    <section class="flex gap-4 lg:gap-14 snap-x overflow-scroll">
       <EpisodeListItem
         v-for="(item, idx) in state.episodes"
         :key="idx"

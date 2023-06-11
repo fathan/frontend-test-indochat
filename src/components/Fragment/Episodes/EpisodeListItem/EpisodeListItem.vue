@@ -13,13 +13,13 @@
       <img
         v-if="item.image !== null"
         :src="item.image.original"
-        class="h-96 w-full object-cover"
+        class="h-[32rem] w-full object-cover"
         alt="Image"
       />
       <img
         v-else
         src="~@assets/no-image.png"
-        class="h-96 w-full object-cover"
+        class="h-[32rem] w-full object-cover"
         alt="Image"
       />
       <div class="absolute right-0 top-0 bg-[#F8B319] rounded-bl-lg rounded-tr-lg px-5 py-1">
