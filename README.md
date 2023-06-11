@@ -52,6 +52,19 @@ Hello, My name is Fathan Rohman I am Frontend engineer. I create sample fetch Da
 }
 ```
 
+## Result Screenshot Project 
+![plot](./src/assets/homepage.png)
+Homepage
+
+![plot](./src/assets/episode-list.png)
+Episode List
+
+![plot](./src/assets/episode-detail.png)
+Episode Detail
+
+--------------
+
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).

@@ -26,6 +26,7 @@
             :src="item.image.original"
             class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
           />
+          <div class="absolute top-0 right-0 bottom-0 left-0 bg-black/60 overlay-4" />
         </div>
         <div class="absolute left-8 top-2 lg:top-12">
           <div class="text-lg lg:text-5xl font-bold text-white mb-0 lg:mb-3">
