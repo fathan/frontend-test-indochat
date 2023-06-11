@@ -7,7 +7,7 @@
       <BackButton :routePath="{
         name: 'Episode List',
         query: {
-          seasonId: state.episode.season
+          seasonId: seasonId
         }
       }" />
 
@@ -40,12 +40,15 @@
 import EpisodeServices from '@services/api/episodes';
 import { onMounted, reactive } from 'vue';
 import { useRoute } from 'vue-router';
+import { useAppStore } from '@stores/app';
 
 import NoImage from '@assets/no-image.png';
+import { storeToRefs } from 'pinia';
 
 export default {
   setup () {
     const route = useRoute();
+    const appStore = useAppStore();
 
     // ///////////////////////
 
@@ -59,6 +62,10 @@ export default {
         season: ''
       }
     });
+
+    const { seasonId } = storeToRefs(appStore);
+
+    // //////////////////////
 
     onMounted(() => {
       initialize();
@@ -92,7 +99,8 @@ export default {
     };
 
     return {
-      state
+      state,
+      seasonId
     }
   }
 };

@@ -22,12 +22,14 @@
 </template>
 
 <script>
-import { onMounted, reactive } from 'vue';
+import { onMounted, reactive, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
 import EpisodeServices from '@services/api/episodes';
 
 import EpisodeListItem from '@components/Fragment/Episodes/EpisodeListItem';
+import { useAppStore } from '@stores/app';
+import { storeToRefs } from 'pinia';
 
 export default {
   components: {
@@ -35,22 +37,39 @@ export default {
   },
   setup () {
     const route = useRoute();
-    const router = useRouter()
+    const router = useRouter();
+    const appStore = useAppStore();
 
     // ///////////////////////
 
     const state = reactive({
+      allowAccess: false,
       episodes: []
     });
 
+    const { seasonId } = storeToRefs(appStore);
+
+    // ///////////////////////
+
     onMounted(() => {
-      initialize();
+      onCheckQueryParam();
+      assignSeasonIdToAppStore();
+
+      if (state.allowAccess)
+        initialize();
     });
+
+    watch(
+      route,
+      () => {
+        if (route.name === 'Episode List') {
+          initialize();
+        }
+      }
+    );
 
     const initialize = () => {
       xhrGetListEpisodeBySeasonId();
-
-      onCheckQueryParam();
     };
 
     const xhrGetListEpisodeBySeasonId = async () => {
@@ -71,9 +90,23 @@ export default {
 
     const onCheckQueryParam = () => {
       if (typeof route.query.seasonId === 'undefined') {
+        state.allowAccess = false;
+
         router.push({
-          name: 'Home'
+          name: 'Episode List',
+          query: {
+            seasonId: seasonId.value
+          }
         });
+      }
+      else {
+        state.allowAccess = true;
+      }
+    };
+
+    const assignSeasonIdToAppStore = () => {
+      if (typeof route.query.seasonId !== 'undefined') {
+        appStore.setSeasonId(route.query.seasonId);
       }
     };
 

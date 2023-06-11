@@ -1,5 +1,6 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
 
 import '@styles/main.scss';
 
@@ -22,7 +23,9 @@ import IconArrowRight from '@components/Common/Icon/Global/ArrowRight.vue';
 const app = createApp(App);
 
 /** Pinia State Management */
-app.use(createPinia());
+const pinia = createPinia();
+pinia.use(piniaPluginPersistedstate);
+app.use(pinia);
 
 /** Vue Router */
 app.use(router);
