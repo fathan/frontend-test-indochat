@@ -8,7 +8,7 @@
         class="w-5 h-5"
         :class="{
           'text-yellow-400': point > 0,
-          'text-gray-300 dark:text-gray-500': point < 2
+          'text-gray-300': point < 2
         }"
         fill="currentColor"
         viewBox="0 0 20 20"
@@ -22,7 +22,7 @@
         class="w-5 h-5"
         :class="{
           'text-yellow-400': point > 3,
-          'text-gray-300 dark:text-gray-500': point < 3
+          'text-gray-300': point < 3
         }"
         fill="currentColor"
         viewBox="0 0 20 20"
@@ -36,7 +36,7 @@
         class="w-5 h-5"
         :class="{
           'text-yellow-400': point > 4,
-          'text-gray-300 dark:text-gray-500': point < 4
+          'text-gray-300': point < 4
         }"
         fill="currentColor"
         viewBox="0 0 20 20"
@@ -50,7 +50,7 @@
         class="w-5 h-5"
         :class="{
           'text-yellow-400': point > 6.9,
-          'text-gray-300 dark:text-gray-500': point < 7
+          'text-gray-300': point < 7
         }"
         fill="currentColor"
         viewBox="0 0 20 20"
@@ -63,8 +63,8 @@
         aria-hidden="true"
         class="w-5 h-5"
         :class="{
-          'text-yellow-400': point > 8,
-          'text-gray-300 dark:text-gray-500': point < 8
+          'text-yellow-400': point > 7.9,
+          'text-gray-300': point < 8
         }"
         fill="currentColor"
         viewBox="0 0 20 20"
