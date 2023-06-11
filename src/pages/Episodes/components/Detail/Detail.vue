@@ -1,9 +1,11 @@
 <template>
-  <div
-    class="flex h-screen w-full bg-black bg-cover bg-no-repeat"
-    :style="`background-image:url(${ state.episode.image })`"
-  >
-    <div class="px-5 lg:px-20 pt-10">
+  <div class="relative flex h-screen w-full">
+    <div
+      class="absolute h-screen w-full bg-black bg-cover bg-no-repeat"
+      :style="`background-image:url(${ state.episode.image })`"
+    />
+    <div class="absolute top-0 right-0 bottom-0 left-0 bg-black/60 overlay-4" />
+    <div class="absolute px-5 lg:px-20 pt-10">
       <BackButton :routePath="{
         name: 'Episode List',
         query: {
@@ -32,7 +34,7 @@
           </div>
         </div>
       </section>
-    </div>    
+    </div>
   </div>
 </template>
 
